@@ -1,0 +1,296 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="tnamecard.index" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Digital Name Card</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="vcard.js"></script>
+
+  
+
+<style>
+@font-face {
+  font-family: 'PSL';
+  src: url('./PSL001pro.ttf') format('truetype');
+    font-weight: 400;
+}
+
+
+@font-face {
+  font-family: 'PSL';
+  src: url('./PSL002pro.ttf') format('truetype');
+  font-weight: 700;
+}
+
+
+@font-face {
+  font-family: 'PSL';
+  src: url('./PSL162Pro.otf') format("opentype");
+  font-weight: 600;
+}
+
+
+@font-face {
+  font-family: 'PSLKandaModernPro';
+  src: url('./PSL160Pro.otf') format("opentype");
+  font-weight: bold;
+}
+
+
+@font-face {
+  font-family: 'PSLKandaModernPro';
+  src: url('./PSL158Pro.otf') format("opentype");
+  font-weight: normal;
+}
+
+
+button.accordion {
+    background-color: #FFFFFF;
+    color: white;
+    cursor: pointer;
+    /*padding: 10px;*/
+    width: 90%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #FFFFFF;
+}
+
+button.accordion:after {
+    content: '\002B';
+    color: #F36E20;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    margin-top: 12px;
+}
+
+button.accordion.active:after {
+    content: "\2212";
+}
+
+div.panel {
+    padding: 0 10px;
+    width: 90%;
+    margin: 5px 0;
+    background-color: #FFFFFF;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.center {
+  position:fixed;
+  top:75px;
+  height:80px;
+  width:100%;
+  background:#4d4d4d;
+}
+
+ 
+.btn{
+	font-family:"PSL";
+	font-size: 20px;
+	background:#F36E20;
+	width:80%;
+	color:white;
+	font-weight: 100;
+	border-radius: 64px;
+	padding:11px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+ }
+
+ .btn_save {
+  font-size: 36px !important;
+  padding: 0 !important;
+ }
+
+ tbody > tr > td > font {
+  line-height: 25px;
+ }
+
+ .company_name {
+  margin-top: 13px;
+  line-height: 15px;
+ }
+ .company_name--thanachart {
+  font-family: 'PSL';
+  font-size: 40px;
+  color: #F36E20;
+ }
+ .company_name--securities {
+  font-family: 'PSL';
+  font-size: 40px;
+  color: #FFFFFF;
+ }
+ .company_name--address {
+  font-family: 'PSL';
+  font-size: 18px;
+  color: #FFFFFF;
+ }
+ .company_name--marginline {
+  line-height: 10px;
+ }
+
+
+</style>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <%if (Request.Params["emp"] != null) { %>
+<div class="center">
+    <asp:Button runat="server" id="btnSave" class="btn btn_save" Text="Save Contact" OnClick="Button1_Click" />
+</div>
+        <% } %>
+<div class="row" style="margin-left:0px;margin-right:0px;margin-right:0px;">
+<div class="col" style="margin-left:15px;">
+<br><img src="logo.png" alt="Image" height="40">
+    <asp:HiddenField ID="carddata" runat="server" />
+<br><br><br>
+</div>
+</div>
+<div class="row" style="margin-left:0px;margin-right:0px;background-image: url(pic_01.jpg);background-size: 100%;background-repeat: no-repeat;">
+<div class="col" style="margin-left:15px;margin-right:15px;">
+<br><br><br><br><br><br><br><br>
+<img src="pic_02.png" alt="Image" height="30">
+<br><br><br>
+<font color="#777777" size="5" face="PSL">
+หลักทรัพย์ธนชาต มีความต้องการที่จะทำให้ฐานะการเงินของลูกค้าดีขึ้น เราจึงมุ่งมั่นที่จะหาโอกาสการลงทุนและคำแนะนำการลงทุนที่ดีที่สุดให้แก่ลูกค้า เรายึดมั่นในความซื่อสัตย์สุจริตและการผลิตงานที่มีคุณภาพสูง เพื่อให้เป็นไปตามความมุ่งมั่นของเราเราจึงได้สร้าง ลงทุน และรักษามาตรฐานที่ดีอย่างเคร่งครัดในด้านงานวิเคราะห์ งานสร้างผลิตภัณฑ์ที่ปรึกษาการลงทุน และเทคโนโลยี อย่างต่อเนื่องเนื่องด้วยเรายึดมั่นในค่านิยมหลักและพันธกิจที่ต้องการให้ลูกค้ามีฐานะการเงินที่ดีขึ้น เราจึงเป็นที่ยอมรับและได้รับรางวัลจากสถาบันต่างๆ อย่างต่อเนื่องตลอดระยะเวลาหลายปีที่ผ่านมา<br><br>
+</font>
+<table style="margin:0 auto;">
+    <tr>
+        <td width="50" align="center" valign="middle"><img src="icon_06.png" alt="Image" height="30" style="margin-bottom: 2em;padding-right: 2em;"></td>
+        <td><font color="#777777" size="5" face="PSL">Top 2 Best Local Brokerage<br>Asiamoney Brokers Poll<br>2008 - 2018</font><br><br></td>
+    </tr>
+    <tr>
+        <td width="50" align="center" valign="middle"><img src="icon_06.png" alt="Image" height="30" style="margin-bottom: 2em;padding-right: 2em;"></td>
+        <td><font color="#777777" size="5" face="PSL">Best Securities House<br>SET Awards 2017</font><br><br></td>
+    </tr>
+    <tr>
+        <td width="50" align="center" valign="middle"><img src="icon_06.png" alt="Image" height="30" style="margin-bottom: 2em;padding-right: 2em;"></td>
+        <td><font color="#777777" size="5" face="PSL">Outstanding Derivatives House<br>SET Awards 2017 - 2018</font><br><br></td>
+    </tr>
+    <tr>
+        <td width="50" align="center" valign="middle"><img src="icon_06.png" alt="Image" height="30" style="margin-bottom: 2em;padding-right: 2em;"></td>
+        <td><font color="#777777" size="5" face="PSL">Outstanding Deal of the Year<br>SET Awards 2017</font><br><br></td>
+    </tr>
+</table>
+</font>
+</div>
+</div>
+<div class="row" style="margin-left:0px;margin-right:0px;margin-right:0px;">
+<div class="col" style="margin-left:15px;">
+<br><br><br><br><br><br><img src="pic_03.png" alt="Image" height="70"><br><br>
+
+<button type="button" class="accordion"><font color="#777777" size="6" face="PSL">Equity</font></button>
+<div class="panel">
+<p>
+<font color="#777777" size="4" face="PSL">หลักทรัพย์ธนชาต เป็นนายหน้าซื้อขายหลักทรัพย์ครบวงจรที่มีประสบการณ์ยาวนานมากว่า 30 ปี มีทีมวิเคราะห์ที่มีประสบการณ์ และศักยภาพสูงเป็นอันดับต้นๆ จากการสำรวจโดยสถาบันจัดอันดับระดับนานาชาติ ด้วยจุดเด่นในการวิเคราะห์พื้นฐานของหุ้นในเชิงลึก นอกจากนี้เรายังมีทีมพัฒนาผลิตภัณฑ์แยกต่างหากซึ่งจะวิเคราะห์ทางด้านเทคนิคและวิเคราะห์เชิงปริมาณ และมีทีมที่ปรึกษาด้านการลงทุนซึ่งมีความสามารถและประสบการณ์สูง จากการที่ ธนชาต ให้บริการมายาวนานกว่า 30 ปี<br>
+</font>
+<a href="https://www.thanachartsec.com/pre_login/Equity/83/th"><font color="#F36E20" size="3" face="PSL">รายละเอียดเพิ่มเติม</font></a>
+</p>
+</div>
+<button type="button" class="accordion"><font color="#777777" size="6" face="PSL">Futures</font></button>
+<div class="panel">
+<p>
+<font color="#777777" size="4" face="PSL">เราตระหนักว่าสินค้าในตลาดอนุพันธ์ฯ (TFEX) เป็นทางเลือกหนึ่งในการลงทุนที่จะช่วยบริหาร ความเสี่ยง และจัดพอร์ตการลงทุนได้อย่างมีประสิทธิภาพ เราจึงใช้ทีมงานคุณภาพ และนักกลยุทธ์ที่ได้รับการยอมรับจากหลายรางวัล เพื่อให้คำแนะนำการลงทุน ในบทวิเคราะห์รายวัน อีกทั้งยังมุ่งส่งเสริมให้ความรู้แก่ผู้แนะนําการลงทุน พัฒนาบริการและเครื่องมือการลงทุนเพื่อพัฒนาให้บริการที่ดีให้แก่ลูกค้าอย่างต่อเนื่อง<br>
+</font>
+<a href="https://www.thanachartsec.com/pre_login/TFEX/84/th"><font color="#F36E20" size="3" face="PSL">รายละเอียดเพิ่มเติม</font></a>
+</p>
+</div>
+<button type="button" class="accordion"><font color="#777777" size="6" face="PSL">Zeal</font></button>
+<div class="panel">
+<p>
+<font color="#777777" size="4" face="PSL">บริการวางแผนการลงทุน ที่ใช้ Absolute Return Strategy ตั้งเป้าผลตอบแทนบวกในทุกสภาพตลาดไม่อิงตลาด เน้นการ protect downside ในทุก ๆ พอร์ตการลงทุน โดยสามารถนำเงินหมุนไปลงในสินทรัพย์เสี่ยงต่ำ หรือเงินสด ในช่วงตลาดขาลงได้อย่างเต็มที่ภายใต้การดูแลของผู้ที่มีความรู้ความเชี่ยวชาญมากประสบการณ์โดยตรง เพื่อแก้ปัญหาการลงทุนของนักลงทุน <br>
+</font>
+<a href="https://info.thanachartsec.com/zeal"><font color="#F36E20" size="3" face="PSL">รายละเอียดเพิ่มเติม</font></a>
+</p>
+</div>
+<button type="button" class="accordion"><font color="#777777" size="6" face="PSL">Mutual Fund</font></button>
+<div class="panel">
+<p>
+<font color="#777777" size="4" face="PSL">เราเป็นตัวแทนจำหน่ายกองทุนแบบ open-architecture ที่ผู้ลงทุนสามารถซื้อกองทุนได้หลากหลายประเภทจากหลากหลายบริษัทจัดการกองทุนผ่านทางบริษัทหลักทรัพย์ธนชาต ดังนั้นเราจึงไม่มี bias ในการให้คำแนะนำการลงทุนแก่ลูกค้าของเรา และทำให้เราสามารถปฏิบัติตามจุดมุ่งหมายที่วางไว้ว่า “ที่หลักทรัพย์ธนชาต เรามีความต้องการที่จะทำให้ฐานะการเงินของลูกค้าดีขึ้น” โดยการเลือกกองทุนที่เหมาะสมและดีที่สุดให้แก่ลูกค้าของเรา<br>
+</font>
+<a href="https://www.thanachartsec.com/pre_login/Mutual-Fund-Review/87/th"><font color="#F36E20" size="3" face="PSL">รายละเอียดเพิ่มเติม</font></a>
+</p>
+</div>
+<button type="button" class="accordion"><font color="#777777" size="6" face="PSL">DW16</font></button>
+<div class="panel">
+<p>
+<font color="#777777" size="4" face="PSL">DW16 โดยหลักทรัพย์ธนชาต มีทีมงานคุณภาพที่ผลิต DW16 ที่ออกมาตอบโจทย์นักลงทุนทั้งทางด้าน การคัดสรรสเปกคุณภาพ และการแนะนำการลงทุนใน DW16 ในแต่ละช่วงเวลา หลักทรัพย์ธนชาตให้ความสำคัญกับ DW16 และทุ่มเทกำลังคนเพื่อให้ DW16 เป็นการลงทุนคุณภาพ สำหรับนักลงทุน พร้อมทั้งมีระบบปฏิบัติการและสร้างสภาพคล่อง (Market Maker) ด้วยระบบอัจฉริยะจากต่างประเทศ และเครื่องมือช่วยอำนวยความสะดวกในการลงทุนที่ทันสมัย<br>
+</font>
+<a href="https://www.DW16.com"><font color="#F36E20" size="3" face="PSL">รายละเอียดเพิ่มเติม</font></a>
+</p>
+</div>
+<button type="button" class="accordion"><font color="#777777" size="6" face="PSL">Block Trade</font></button>
+<div class="panel">
+<p>
+<font color="#777777" size="4" face="PSL">เราเป็นหนึ่งในหลักทรัพย์ที่ให้บริการการลงทุนและทำธุรกรรมการลงทุนใน Block Trade มากเป็นอันดับต้นๆของอุตสาหกรรม เรามีทีมผลิตภัณฑ์อนุพันธ์ และหุ้นกู้อนุพันธ์ที่มีประสบการณ์และความเชี่ยวชาญสูงในการสร้างสรรค์ผลิตภัณฑ์และบริการที่ดีให้แก่ลูกค้าของเรา<br>
+</font>
+<a href="https://www.thanachartsec.com/pre_login/BlockTrade/85/th"><font color="#F36E20" size="3" face="PSL">รายละเอียดเพิ่มเติม</font></a>
+</p>
+</div>
+<button type="button" class="accordion"><font color="#777777" size="6" face="PSL">Structured Note</font></button>
+<div class="panel">
+<p>
+<font color="#777777" size="4" face="PSL">หลักทรัพย์ธนชาต เป็นผู้ออกและจำหน่าย หู้นกู้ที่มีอนุพันธ์แฝงระยะสั้น (Structured Note) มีความเป็นมืออาชีพในการดำเนินธุรกิจภายใต้ทีมงานคุณภาพ และเป็นผู้ออกที่มีความมั่นคงสูง ได้รับอันดับความน่าเชื่อถือระดับ A- จาก TRIS Rating พร้อมทั้ง มีความหลากหลายของ Model ซึ่งโดยสามารถเลือกลงทุนในหุ้น SET 50 และดัชนี<br>
+</font>
+<a href="https://www.thanachartsec.com/pre_login/ELN-PPN/86/th"><font color="#F36E20" size="3" face="PSL">รายละเอียดเพิ่มเติม</font></a>
+</p>
+</div>
+
+<br>
+<br>
+</div>
+</div>
+<div class="row" style="margin-left:0px;margin-right:0px;background-color: #000000;">
+<div class="col" style="margin-left:15px;">
+<br>
+<div class="company_name">
+<p class="company_name--thanachart">Thanachart</p>
+<p class="company_name--securities">Securities</p>
+</div>
+<br>
+<div class="company_name--marginline">
+<p class="company_name--address">บริษัทหลักทรัพย์ ธนชาต จำกัด (มหาชน)</p>
+<p class="company_name--address">สำนักงานใหญ่</p>
+<p class="company_name--address">444 อาคารเอ็มบีเค ทาวเวอร์ ชั้น 18-19</p>
+<p class="company_name--address">ถนนพญาไท แขวงวังใหม่ เขตปทุมวัน กรุงเทพฯ 10330</p>
+<p class="company_name--address">Tel: (02) 779 9201</p>
+</div>
+<p class="company_name--address">Email: TNSOnline@thanachart.co.th</p>
+<br><br>
+</div>
+</div>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        }
+    }
+</script>
+    </form>
+</body>
+</html>
